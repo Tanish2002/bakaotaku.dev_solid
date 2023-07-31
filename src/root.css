@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Moresby";
+  src: url("/moresby.woff2");
+  font-display: swap;
+}
+
+body {
+  font-family: "Moresby", sans-serif;
+}
