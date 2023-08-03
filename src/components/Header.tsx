@@ -1,7 +1,7 @@
 import { Motion } from "@motionone/solid";
 import { themeState, Theme } from "../store/theme";
 import { spring } from "motion";
-import { BsMoonFill, BsSunFill } from "solid-icons/bs";
+import { BsMoonStarsFill, BsSunFill } from "solid-icons/bs";
 
 const [theme, setTheme] = themeState;
 const Header = () => {
@@ -14,7 +14,9 @@ const Header = () => {
       <div>Baka</div>
 
       <div
-        onClick={toggleTheme}
+        onClick={() => {
+          toggleTheme();
+        }}
         class={`flex w-[70px] rounded-[50px] bg-zinc-200 p-[5px] shadow-inner hover:cursor-pointer dark:bg-zinc-700 ${theme() === Theme.LIGHT && "place-content-end"
           }`}
       >
@@ -26,9 +28,9 @@ const Header = () => {
         >
           <Motion.div press={{ rotate: 360 }}>
             {theme() === Theme.LIGHT ? (
-              <BsMoonFill class="h-6 w-6 text-yellow-300" />
+              <BsSunFill class="h-6 w-6 text-yellow-300" />
             ) : (
-              <BsSunFill class="h-6 w-6 text-slate-200" />
+              <BsMoonStarsFill class="h-6 w-6 text-slate-200" />
             )}
           </Motion.div>
         </Motion.div>

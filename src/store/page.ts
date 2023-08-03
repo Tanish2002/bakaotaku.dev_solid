@@ -1,3 +1,4 @@
 import { createSignal } from "solid-js";
 
-export default createSignal("loader");
+type PageType = "home" | "about" | "loader";
+export default createSignal<PageType>("loader");

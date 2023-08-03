@@ -1,9 +1,9 @@
-import { animate, timeline, type TimelineDefinition } from "motion";
-import { onMount, createSignal, createEffect, For, Show } from "solid-js";
+import { timeline, type TimelineDefinition } from "motion";
+import { onMount, createSignal, createEffect, For } from "solid-js";
 import pageStore from "../store/page";
 
 const Loader = () => {
-  const [page, setPage] = pageStore;
+  const [_, setPage] = pageStore;
   let containerRef: HTMLDivElement;
   let spanRef: HTMLSpanElement;
 
@@ -16,11 +16,6 @@ const Loader = () => {
   });
 
   createEffect(() => {
-    if (page() !== "loader") {
-      animate(containerRef, { opacity: 0 });
-      // containerRef.style.display = "none";
-      return;
-    }
     const sequence: TimelineDefinition = [
       [containerRef, { gridTemplateRows: "50% 0% 50%" }],
       [containerRef, { gridTemplateRows: "33.3% 33.3% 33.3%" }],
@@ -74,38 +69,36 @@ const Loader = () => {
       containerRef.remove();
       setPage("home");
     }, animation.duration * 1000);
-  }, [page]);
+  });
 
   return (
-    <Show when={page() === "loader"}>
-      <div
-        ref={containerRef!}
-        class="absolute z-50 grid h-screen w-screen overflow-hidden grid-rows-[50%_0%_50%]"
-      >
-        <For each={Array.from(Array(3))}>
-          {(_, divIdx) => (
-            <div
-              class={`flex items-center text-9xl font-semibold sm:text-8xl ${divIdx() % 2 === 0
-                  ? "bg-black text-white dark:bg-white dark:text-black"
-                  : "bg-white text-black dark:bg-black dark:text-white"
-                }`}
-            >
-              <For each={Array.from(Array(10))}>
-                {(_, spanIdx) => (
-                  <span
-                    ref={spanRef!}
-                    class={`m-5 whitespace-nowrap text-9xl opacity-0 ${divIdx() % 2 === 0 ? "topBottom" : "center"
-                      } ${spanIdx() !== 5 && "nonCenter"}`}
-                  >
-                    Baka Otaku
-                  </span>
-                )}
-              </For>
-            </div>
-          )}
-        </For>
-      </div>
-    </Show>
+    <div
+      ref={containerRef!}
+      class="absolute z-50 grid h-screen w-screen overflow-hidden grid-rows-[50%_0%_50%]"
+    >
+      <For each={Array.from(Array(3))}>
+        {(_, divIdx) => (
+          <div
+            class={`flex items-center text-9xl font-semibold sm:text-8xl ${divIdx() % 2 === 0
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : "bg-white text-black dark:bg-black dark:text-white"
+              }`}
+          >
+            <For each={Array.from(Array(10))}>
+              {(_, spanIdx) => (
+                <span
+                  ref={spanRef!}
+                  class={`m-5 whitespace-nowrap text-9xl opacity-0 ${divIdx() % 2 === 0 ? "topBottom" : "center"
+                    } ${spanIdx() !== 5 && "nonCenter"}`}
+                >
+                  Baka Otaku
+                </span>
+              )}
+            </For>
+          </div>
+        )}
+      </For>
+    </div>
   );
 };
 
