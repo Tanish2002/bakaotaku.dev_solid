@@ -1,5 +1,5 @@
 import { Presence } from "@motionone/solid";
-import { Dynamic } from "solid-js/web";
+import { Match, Show, Switch } from "solid-js/web";
 import About from "~/components/About";
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
@@ -7,20 +7,23 @@ import Home from "~/components/Home";
 import Loader from "~/components/Loader";
 import MouseHover from "~/components/MouseHover";
 import pageStore from "~/store/page";
+import SvgCursor from "~/icons/Cursor";
 
-const options = {
-  loader: Loader,
-  home: Home,
-  about: About,
-};
 export default function Index() {
   const [page, _] = pageStore;
   return (
     <main class="max-w-screen min-h-screen grid grid-cols-1 grid-rows-[5fr_90fr_5fr]">
+      <Loader />
       <Header />
-      <Presence>
-        <Dynamic component={options[page()]} />
+      <Presence exitBeforeEnter>
+        <Show when={page() === "home"} keyed>
+          <Home />
+        </Show>
+        <Show when={page() === "about"} keyed>
+          <About />
+        </Show>
       </Presence>
+      <SvgCursor class="pointer-events-none will-change-transform w-20 h-20 fill-white absolute z-50" />
       <MouseHover />
       <Footer />
     </main>

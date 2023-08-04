@@ -11,3 +11,13 @@
 body {
   font-family: "Moresby", sans-serif;
 }
+
+#text {
+  opacity: 1;
+}
+#text:has(> .hover:hover) {
+  opacity: 0 !important;
+}
+* {
+  /* cursor: none; */
+}

@@ -6,7 +6,7 @@ const About = () => {
 
   return (
     <Motion.div
-      class="flex items-center justify-center text-4xl"
+      class="flex items-center justify-center text-4xl m-48"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

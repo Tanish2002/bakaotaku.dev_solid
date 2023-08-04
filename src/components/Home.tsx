@@ -2,24 +2,34 @@ import { Motion } from "@motionone/solid";
 import { createEffect, createSignal, For } from "solid-js";
 import pageStore from "~/store/page";
 
+const [height, setHeight] = createSignal(0);
 export default function Home() {
-  const [ref, setRef] = createSignal<HTMLElement>();
+  let divRef: HTMLDivElement;
   const [_, setPage] = pageStore;
 
-  const [height, setHeight] = createSignal(0);
-
   createEffect(() => {
-    ref() && setHeight(ref()!.getBoundingClientRect().height - 2);
+    // Change h1 height on div height change
+    const height = divRef.getBoundingClientRect().height;
+    if (height !== 0) {
+      setHeight(height);
+    }
   });
 
   return (
     <Motion.section
-      class="flex items-center justify-center" // First time hidden
+      id="hover"
+      class="flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={() => {
         setPage("about");
+      }}
+      onmouseenter={() => {
+        console.log("hovering!!!!");
+      }}
+      onMouseLeave={() => {
+        console.log("hovering end!!!!");
       }}
     >
       <h1
@@ -30,7 +40,7 @@ export default function Home() {
       >
         <For each={["Baka Otaku", "Tanish Khare"]}>
           {(word) => (
-            <div ref={setRef}>
+            <div ref={divRef}>
               <For each={word.split("")}>
                 {(letter, idx) => (
                   <Motion.span
@@ -38,7 +48,7 @@ export default function Home() {
                     animate={{ y: "-100%" }}
                     transition={{
                       y: {
-                        duration: 1,
+                        duration: 1.2,
                         delay: idx() * 0.03,
                         easing: [0.76, 0, 0.024, 1],
                       },
