@@ -1,8 +1,10 @@
 import { Motion } from "@motionone/solid";
 import pageStore from "../store/page";
+import cursorStore from "~/store/cursor";
 
 const About = () => {
   const [_, setPage] = pageStore;
+  const [_hover, setHover] = cursorStore;
 
   return (
     <Motion.div
@@ -12,6 +14,12 @@ const About = () => {
       exit={{ opacity: 0 }}
       onClick={() => {
         setPage("home");
+      }}
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
       }}
     >
       Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim

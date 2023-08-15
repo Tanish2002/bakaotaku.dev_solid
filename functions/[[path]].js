@@ -2,39 +2,39 @@ var manifest = {
 	"/*404": [
 	{
 		type: "script",
-		href: "/assets/_...404_-98f39d8c.js"
+		href: "/assets/_...404_-15029598.js"
 	},
 	{
 		type: "script",
-		href: "/assets/entry-client-e0c1ddef.js"
+		href: "/assets/entry-client-57c8fb98.js"
 	},
 	{
 		type: "style",
-		href: "/assets/entry-client-6257d7d8.css"
+		href: "/assets/entry-client-7da45684.css"
 	}
 ],
 	"/": [
 	{
 		type: "script",
-		href: "/assets/index-825af337.js"
+		href: "/assets/index-8c894912.js"
 	},
 	{
 		type: "script",
-		href: "/assets/entry-client-e0c1ddef.js"
+		href: "/assets/entry-client-57c8fb98.js"
 	},
 	{
 		type: "style",
-		href: "/assets/entry-client-6257d7d8.css"
+		href: "/assets/entry-client-7da45684.css"
 	}
 ],
 	"entry-client": [
 	{
 		type: "script",
-		href: "/assets/entry-client-e0c1ddef.js"
+		href: "/assets/entry-client-57c8fb98.js"
 	},
 	{
 		type: "style",
-		href: "/assets/entry-client-6257d7d8.css"
+		href: "/assets/entry-client-7da45684.css"
 	}
 ],
 	"index.html": [
@@ -14296,6 +14296,30 @@ function requireBs () {
 
 var bsExports = requireBs();
 
+function createHydratableSingletonRoot(factory) {
+  const owner = getOwner();
+  return () => createRoot(factory, owner) ;
+}
+
+var DEFAULT_MOUSE_POSITION = {
+  x: 0,
+  y: 0,
+  isInside: false,
+  sourceType: null
+};
+function createMousePosition(target, options = {}) {
+  const fallback = {
+    ...DEFAULT_MOUSE_POSITION,
+    ...options.initialValue
+  };
+  {
+    return fallback;
+  }
+}
+var useMousePosition = /* @__PURE__ */ createHydratableSingletonRoot(
+  createMousePosition.bind(void 0, void 0, void 0)
+);
+
 const FETCH_EVENT = "$FETCH";
 
 function getRouteMatches$1(routes, path, method) {
@@ -15641,7 +15665,7 @@ const Title = props => MetaTag("title", props, {
 });
 const Meta$1 = props => MetaTag("meta", props);
 
-const _tmpl$$a = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
+const _tmpl$$9 = ["<div", " style=\"", "\"><div style=\"", "\"><p style=\"", "\" id=\"error-message\">", "</p><button id=\"reset-errors\" style=\"", "\">Clear errors and retry</button><pre style=\"", "\">", "</pre></div></div>"];
 function ErrorBoundary(props) {
   return createComponent(ErrorBoundary$1, {
     fallback: (e, reset) => {
@@ -15665,7 +15689,7 @@ function ErrorBoundary(props) {
   });
 }
 function ErrorMessage(props) {
-  return ssr(_tmpl$$a, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
+  return ssr(_tmpl$$9, ssrHydrationKey(), "padding:" + "16px", "background-color:" + "rgba(252, 165, 165)" + (";color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";overflow:" + "scroll") + (";padding:" + "16px") + (";margin-bottom:" + "8px"), "font-weight:" + "bold", escape(props.error.message), "color:" + "rgba(252, 165, 165)" + (";background-color:" + "rgb(153, 27, 27)") + (";border-radius:" + "5px") + (";padding:" + "4px 8px"), "margin-top:" + "8px" + (";width:" + "100%"), escape(props.error.stack));
 }
 
 const routeLayouts = {
@@ -15679,7 +15703,7 @@ const routeLayouts = {
   }
 };
 
-const _tmpl$$9 = ["<link", " rel=\"stylesheet\"", ">"],
+const _tmpl$$8 = ["<link", " rel=\"stylesheet\"", ">"],
   _tmpl$2$2 = ["<link", " rel=\"modulepreload\"", ">"];
 function flattenIslands(match, manifest) {
   let result = [...match];
@@ -15709,7 +15733,7 @@ function getAssetsFromManifest(manifest, routerContext) {
   match.push(...(manifest["entry-client"] || []));
   match = manifest ? flattenIslands(match, manifest) : [];
   const links = match.reduce((r, src) => {
-    r[src.href] = src.type === "style" ? ssr(_tmpl$$9, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : src.type === "script" ? ssr(_tmpl$2$2, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : undefined;
+    r[src.href] = src.type === "style" ? ssr(_tmpl$$8, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : src.type === "script" ? ssr(_tmpl$2$2, ssrHydrationKey(), ssrAttribute("href", escape(src.href, true), false)) : undefined;
     return r;
   }, {});
   return Object.values(links);
@@ -15760,9 +15784,9 @@ function Body(props) {
   }
 }
 
-const _tmpl$$8 = ["<main", " class=\"text-center mx-auto text-gray-700 p-4\"><h1 class=\"max-6-xs text-6xl text-sky-700 font-thin uppercase my-16\">Not Found</h1><p class=\"mt-8\">Visit <a href=\"https://solidjs.com\" target=\"_blank\" class=\"text-sky-600 hover:underline\">solidjs.com</a> to learn how to build Solid apps.</p><p class=\"my-4\"><!--#-->", "<!--/--> - <!--#-->", "<!--/--></p></main>"];
+const _tmpl$$7 = ["<main", " class=\"text-center mx-auto text-gray-700 p-4\"><h1 class=\"max-6-xs text-6xl text-sky-700 font-thin uppercase my-16\">Not Found</h1><p class=\"mt-8\">Visit <a href=\"https://solidjs.com\" target=\"_blank\" class=\"text-sky-600 hover:underline\">solidjs.com</a> to learn how to build Solid apps.</p><p class=\"my-4\"><!--#-->", "<!--/--> - <!--#-->", "<!--/--></p></main>"];
 function NotFound() {
-  return ssr(_tmpl$$8, ssrHydrationKey(), escape(createComponent(A, {
+  return ssr(_tmpl$$7, ssrHydrationKey(), escape(createComponent(A, {
     href: "/",
     "class": "text-sky-600 hover:underline",
     children: "Home"
@@ -17158,10 +17182,13 @@ const Motion = new Proxy(MotionComponent, {
 
 const pageStore = createSignal("loader");
 
+const cursorStore = createSignal(false);
+
 const About = () => {
   const [_, setPage] = pageStore;
+  const [_hover, setHover] = cursorStore;
   return createComponent(Motion.div, {
-    "class": "flex items-center justify-center text-4xl",
+    "class": "flex items-center justify-center text-4xl m-48",
     initial: {
       opacity: 0
     },
@@ -17174,13 +17201,19 @@ const About = () => {
     onClick: () => {
       setPage("home");
     },
+    onMouseEnter: () => {
+      setHover(true);
+    },
+    onMouseLeave: () => {
+      setHover(false);
+    },
     children: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis. About"
   });
 };
 
-const _tmpl$$7 = ["<footer", " class=\"flex h-full items-center justify-center\"><ul class=\"flex justify-center gap-4 font-bold\"><li>Projects</li><li><a href=\"/blog\">Blog</a></li><li>Contact Me</li></ul></footer>"];
+const _tmpl$$6 = ["<footer", " class=\"flex h-full items-center justify-center\"><ul class=\"flex justify-center gap-4 font-bold\"><li>Projects</li><li><a href=\"/blog\">Blog</a></li><li>Contact Me</li></ul></footer>"];
 const Footer = () => {
-  return ssr(_tmpl$$7, ssrHydrationKey());
+  return ssr(_tmpl$$6, ssrHydrationKey());
 };
 
 var Theme = /* @__PURE__ */ ((Theme2) => {
@@ -17193,10 +17226,10 @@ const getPreferredTheme = () => {
 };
 const themeState = createSignal(getPreferredTheme());
 
-const _tmpl$$6 = ["<header", " class=\"flex items-center justify-between\"><div>Baka</div><div class=\"", "\">", "</div></header>"];
+const _tmpl$$5 = ["<header", " class=\"flex items-center justify-between\"><div>Baka</div><div class=\"", "\">", "</div></header>"];
 const [theme, setTheme] = themeState;
 const Header = () => {
-  return ssr(_tmpl$$6, ssrHydrationKey(), `flex w-[70px] rounded-[50px] bg-zinc-200 p-[5px] shadow-inner hover:cursor-pointer dark:bg-zinc-700 ${theme() === Theme.LIGHT && "place-content-end"}`, escape(createComponent(Motion.div, {
+  return ssr(_tmpl$$5, ssrHydrationKey(), `flex w-[70px] rounded-[50px] bg-zinc-200 p-[5px] shadow-inner hover:cursor-pointer dark:bg-zinc-700 ${theme() === Theme.LIGHT && "place-content-end"}`, escape(createComponent(Motion.div, {
     "class": "flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black/90",
     get transition() {
       return {
@@ -17223,13 +17256,15 @@ const Header = () => {
   })));
 };
 
-const _tmpl$$5 = ["<h1", " style=\"", "\" class=\"overflow-hidden text-center sm:text-9xl font-semibold text-3xl\">", "</h1>"],
+const _tmpl$$4 = ["<h1", " style=\"", "\" class=\"overflow-hidden text-center sm:text-9xl font-semibold text-3xl\">", "</h1>"],
   _tmpl$2$1 = ["<div", ">", "</div>"];
+const [height, setHeight] = createSignal(0);
 function Home() {
-  const [_, setPage] = pageStore;
-  const [height, setHeight] = createSignal(0);
+  const [_hover, setHover] = cursorStore;
+  const [_page, setPage] = pageStore;
   return createComponent(Motion.section, {
-    "class": "flex items-center justify-center",
+    id: "hover",
+    "class": "flex items-center justify-center hover my-48",
     initial: {
       opacity: 0
     },
@@ -17242,8 +17277,14 @@ function Home() {
     onClick: () => {
       setPage("about");
     },
+    onMouseEnter: () => {
+      setHover(true);
+    },
+    onMouseLeave: () => {
+      setHover(false);
+    },
     get children() {
-      return ssr(_tmpl$$5, ssrHydrationKey(), "height:" + `${escape(height(), true)}px`, escape(createComponent(For, {
+      return ssr(_tmpl$$4, ssrHydrationKey(), "height:" + `${escape(height(), true)}px`, escape(createComponent(For, {
         each: ["Baka Otaku", "Tanish Khare"],
         children: word => ssr(_tmpl$2$1, ssrHydrationKey(), escape(createComponent(For, {
           get each() {
@@ -17257,7 +17298,7 @@ function Home() {
             get transition() {
               return {
                 y: {
-                  duration: 1,
+                  duration: 1.2,
                   delay: idx() * 0.03,
                   easing: [0.76, 0, 0.024, 1]
                 }
@@ -17273,53 +17314,171 @@ function Home() {
   });
 }
 
-const _tmpl$$4 = ["<div", " class=\"absolute z-50 grid h-screen w-screen overflow-hidden grid-rows-[50%_0%_50%]\">", "</div>"],
-  _tmpl$2 = ["<div", " class=\"", "\">", "</div>"],
-  _tmpl$3 = ["<span", " class=\"", "\">Baka Otaku</span>"];
+const _tmpl$$3 = ["<div", " class=\"", "\">", "</div>"];
 const Loader = () => {
-  return ssr(_tmpl$$4, ssrHydrationKey(), escape(createComponent(For, {
-    get each() {
-      return Array.from(Array(3));
+  const [_, setPage] = pageStore;
+  const [xPos, setXpos] = createSignal(0);
+  return createComponent(Motion.div, {
+    get initial() {
+      return gridVariants.initial;
     },
-    children: (_, divIdx) => ssr(_tmpl$2, ssrHydrationKey(), `flex items-center text-9xl font-semibold sm:text-8xl ${divIdx() % 2 === 0 ? "bg-black text-white dark:bg-white dark:text-black" : "bg-white text-black dark:bg-black dark:text-white"}`, escape(createComponent(For, {
-      get each() {
-        return Array.from(Array(10));
-      },
-      children: (_, spanIdx) => ssr(_tmpl$3, ssrHydrationKey(), `m-5 whitespace-nowrap text-9xl opacity-0 ${divIdx() % 2 === 0 ? "topBottom" : "center"} ${spanIdx() !== 5 && "nonCenter"}`)
-    })))
-  })));
+    get animate() {
+      return gridVariants.animation;
+    },
+    get exit() {
+      return gridVariants.exit;
+    },
+    "class": "absolute z-50 grid h-screen w-screen overflow-hidden grid-rows-[50%_0%_50%]",
+    get children() {
+      return createComponent(For, {
+        get each() {
+          return Array.from(Array(3));
+        },
+        children: (_, divIdx) => ssr(_tmpl$$3, ssrHydrationKey(), `flex items-center text-9xl font-semibold sm:text-8xl ${divIdx() % 2 === 0 ? "bg-black text-white dark:bg-white dark:text-black" : "bg-white text-black dark:bg-black dark:text-white"}`, escape(createComponent(For, {
+          get each() {
+            return Array.from(Array(10));
+          },
+          children: (_, spanIdx) => createComponent(Motion.span, {
+            get initial() {
+              return spanVariants.initial({
+                xVal: xPos(),
+                pos: "center"
+              });
+            },
+            get animate() {
+              return spanVariants.animation({
+                xVal: xPos(),
+                pos: divIdx() % 2 === 0 ? "topBottom" : "center"
+              });
+            },
+            get exit() {
+              return spanVariants.exit({
+                pos: divIdx() % 2 === 0 ? "topBottom" : "center",
+                index: spanIdx()
+              });
+            },
+            onMotionComplete: () => {
+              setPage("home");
+            },
+            "class": "m-5 whitespace-nowrap text-9xl opacity-0",
+            children: "Baka Otaku"
+          })
+        })))
+      });
+    }
+  });
+};
+const gridVariants = {
+  initial: {
+    gridTemplateRows: "50% 0% 50%"
+  },
+  animation: {
+    gridTemplateRows: "33.3% 33.3% 33.3%"
+  },
+  exit: {
+    gridTemplateRows: "0% 100% 0%"
+  }
+};
+const spanVariants = {
+  initial: ({
+    xVal,
+    pos
+  }) => ({
+    x: pos === "center" ? 0 : xVal,
+    y: 100,
+    opacity: 0
+  }),
+  animation: ({
+    xVal,
+    pos
+  }) => {
+    return {
+      y: 0,
+      opacity: 1,
+      x: pos === "center" ? [0, xVal] : [xVal, 0],
+      transition: {
+        delay: 0.6,
+        type: "tween",
+        ease: "easeIn",
+        x: {
+          delay: 0.7,
+          type: "tween",
+          duration: 2,
+          ease: "easeInOut"
+        }
+      }
+    };
+  },
+  exit: ({
+    pos,
+    index
+  }) => ({
+    opacity: 0
+    // opacity: pos === "center" ? (index === 5 ? 1 : 0) : 0,
+  })
 };
 
-const _tmpl$$3 = "<path d=\"M432.302 147.948c-19.821-19.867-47.435-32.208-77.724-32.202h-88.664c-30.289-.007-57.903 12.335-77.732 32.194-19.851 19.82-32.208 47.434-32.194 77.732v124.134c0 44.374 16.992 84.84 44.76 114.251 27.691 29.418 66.593 47.959 109.495 47.943 42.901.016 81.802-18.525 109.509-47.943 27.753-29.411 44.752-69.877 44.752-114.251V225.672a109.61 109.61 0 0 0-32.202-77.724zM422.01 349.806c0 33.474-12.782 63.478-33.157 85.087-20.445 21.601-48.052 34.607-78.611 34.622-30.552-.015-58.159-13.021-78.596-34.622-20.391-21.609-33.172-51.621-33.172-85.087v-60.031H422.01v60.031zm0-90.375H310.758V158.232h43.82c18.687.015 35.416 7.516 47.689 19.751 12.234 12.273 19.736 28.995 19.743 47.689v33.759zM216.683 0h24.276v69.799h-24.276zM330.001 30.359l-21.032-12.142-34.899 60.455 21.031 12.136zM47.503 193.463h69.792v-24.276l-69.798-.008zM126.17 136.078l-60.446-34.9 12.142-21.03 60.446 34.9zM183.572 78.672l-34.893-60.455-21.03 12.15 34.892 60.441z\"></path>";
-const SvgMouse = props => ssrElement("svg", mergeProps({
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 512 512"
-}, props), () => ssr(_tmpl$$3), true);
-
-const _tmpl$$2 = ["<div", " class=\"absolute bottom-[5%] left-2/4 -translate-x-2/4 animate-bounce\">", "</div>"];
-const MouseHover = () => {
-  return ssr(_tmpl$$2, ssrHydrationKey(), escape(createComponent(SvgMouse, {
-    "class": "mb-6 w-11 fill-black dark:fill-white"
-  })));
+const _tmpl$$2 = "<circle cx=\"50%\" cy=\"50%\" r=\"12\"><animate attributeName=\"r\" begin=\"0s\" dur=\"1s\" repeatCount=\"indefinite\" values=\"9;12;9\"></animate></circle>",
+  _tmpl$2 = ["<g id=\"text\" style=\"", "\" class=\"transition-opacity\"><path d=\"m73.525 155.842 3.038-2.095 7.288 1.339 2.066 3.034-2.804 15.254-3.01 2.101-7.287-1.34-2.095-3.039.39-2.124 3.464-2.414-.933 5.075 6.55 1.204 2.804-15.254-6.55-1.204-.396 2.154-3.458 2.384.933-5.075Zm-19.003-12.085 10.96 6.214-10.222 18.034-2.584-1.465 8.936-15.763-5.794-3.285-1.272 2.245-4.034 1.093 4.01-7.073Zm-8.67-8.08 2.093 2.107-14.71 14.607-2.093-2.108 14.71-14.606ZM30.871 118.23l3.551 1.008 3.609 6.472-1.023 3.525-13.547 7.553-3.536-.982-3.608-6.472 1.008-3.551 1.887-1.052 4.066 1.133-4.507 2.513 3.244 5.817 13.546-7.553-3.243-5.817-1.913 1.066-4.04-1.147 4.506-2.513Zm-2.739-22.688.472 2.932-10.248 1.649 1.115 6.931 10.248-1.649.472 2.932-20.466 3.294-.472-2.932 9.744-1.568-7.485-5.542-3.318.534-.471-2.932 3.618-.552 4.592 3.424.385-.062-.3-1.866 2.133-2.987 9.981-1.606Zm17.433-48.244-1.749 2.4-13.117-9.558-.384-2.58-1.43 1.963 3.88 7.765-1.271 1.746L23 47.597l-1.413 1.94 2.574-.426 13.117 9.558-1.75 2.4L18.8 48.88l3.127-4.292 7.324 1.514.212-.291-3.649-6.557 3.022-4.146 16.73 12.191Zm16.657-12.179-8.676 5.644-8.49-13.051.797-3.56-2.49 1.619-1.423-2.188 8.977-5.84 1.423 2.187-6.186 4.025 4.025 6.186.625-3.055 4.35-2.83 1.407 2.162-6.186 4.025 4.237 6.513 6.186-4.025 1.424 2.188Zm23.95-6.879-3.308.377-.379-3.308 3.309-.378.378 3.308Zm35.878 3.871-3.369 1.51-6.923-2.64-1.481-3.359 5.526-14.492 3.34-1.52 6.924 2.64 1.509 3.37-.77 2.017-3.844 1.745 1.839-4.821-6.223-2.373-5.526 14.492 6.223 2.373.78-2.046 3.833-1.717-1.838 4.821Zm16.494 15.333-9.652-8.1 13.327-15.879 2.275 1.91-11.649 13.88 5.102 4.281 1.658-1.976 4.165-.343-5.226 6.227Zm7.059 9.52-1.676-2.452 17.117-11.694 1.675 2.452-17.116 11.694Zm11.565 19.876-3.309-1.636-2.374-7.02 1.646-3.28 14.692-4.969 3.299 1.608 2.375 7.02-1.637 3.308-2.046.692-3.793-1.852 4.888-1.654-2.134-6.309-14.692 4.97 2.133 6.309 2.075-.702 3.765 1.862-4.888 1.653Zm-1.424 22.808.068-2.969 10.377.239.161-7.019-10.377-.238.068-2.97 20.725.477-.068 2.969-9.868-.227 6.356 6.808 3.359.077-.068 2.97-3.659-.115-3.894-4.2-.39-.01-.044 1.89-2.639 2.55-10.107-.231ZM139.34 135.52l1.713-2.426 13.257 9.363.422 2.575 1.402-1.985-3.996-7.707 1.246-1.764 8.513 1.311 1.384-1.96-2.567.463-13.257-9.362 1.713-2.426 16.908 11.941-3.063 4.338-7.345-1.405-.208.294 3.745 6.502-2.959 4.19-16.908-11.942Zm-16.475 12.425 8.591-5.772 8.684 12.924-.745 3.572 2.465-1.657 1.456 2.167-8.89 5.973-1.455-2.167 6.125-4.115-4.115-6.126-.58 3.064-4.308 2.894-1.439-2.141 6.126-4.116-4.333-6.45-6.126 4.116-1.456-2.166Zm-23.845 7.233 3.302-.427.427 3.303-3.302.427-.428-3.303Z\"><animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0 92.5 92\" to=\"360 92.5 92\" begin=\"0s\" dur=\"3s\" repeatCount=\"indefinite\"></animateTransform></path></g>"];
+const SvgCursor = props => {
+  const pos = useMousePosition();
+  const [hover, _] = cursorStore;
+  // createEffect(() => {
+  //   console.log(pos.x, pos.y);
+  // });
+  return ssrElement("svg", mergeProps({
+    width: "185",
+    height: "184",
+    viewBox: "0 0 185 184",
+    xmlns: "http://www.w3.org/2000/svg",
+    get style() {
+      return {
+        left: `${pos.x - 35}px`,
+        top: `${pos.y - 35}px`
+      };
+    }
+  }, props), () => [ssr(_tmpl$$2), ssr(_tmpl$2, "opacity:" + (hover() ? 1 : 0))], true);
 };
 
-const _tmpl$$1 = ["<main", " class=\"max-w-screen min-h-screen grid grid-cols-1 grid-rows-[5fr_90fr_5fr]\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></main>"];
-const options = {
-  loader: Loader,
-  home: Home,
-  about: About
-};
+const _tmpl$$1 = ["<main", " class=\"max-w-screen min-h-screen grid grid-cols-1 grid-rows-[5fr_90fr_5fr]\"><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--><!--#-->", "<!--/--></main>"];
 function Index() {
   const [page, _] = pageStore;
-  return ssr(_tmpl$$1, ssrHydrationKey(), escape(createComponent(Header, {})), escape(createComponent(Presence, {
+  return ssr(_tmpl$$1, ssrHydrationKey(), escape(createComponent(Presence, {
+    exitBeforeEnter: true,
     get children() {
-      return createComponent(Dynamic, {
-        get component() {
-          return options[page()];
+      return createComponent(Show, {
+        get when() {
+          return page() === "loader";
+        },
+        get children() {
+          return createComponent(Loader, {});
         }
       });
     }
-  })), escape(createComponent(MouseHover, {})), escape(createComponent(Footer, {})));
+  })), escape(createComponent(Header, {})), escape(createComponent(Presence, {
+    exitBeforeEnter: true,
+    get children() {
+      return [createComponent(Show, {
+        get when() {
+          return page() === "home";
+        },
+        keyed: true,
+        get children() {
+          return createComponent(Home, {});
+        }
+      }), createComponent(Show, {
+        get when() {
+          return page() === "about";
+        },
+        keyed: true,
+        get children() {
+          return createComponent(About, {});
+        }
+      })];
+    }
+  })), escape(createComponent(SvgCursor, {
+    "class": "pointer-events-none will-change-transform w-20 h-20 fill-white absolute z-50 mix-blend-difference"
+  })), escape(createComponent(Footer, {})));
 }
 
 /// <reference path="../server/types.tsx" />

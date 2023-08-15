@@ -1,11 +1,13 @@
 import { Motion } from "@motionone/solid";
 import { createEffect, createSignal, For } from "solid-js";
 import pageStore from "~/store/page";
+import cursorStore from "~/store/cursor";
 
 const [height, setHeight] = createSignal(0);
 export default function Home() {
+  const [_hover, setHover] = cursorStore;
   let divRef: HTMLDivElement;
-  const [_, setPage] = pageStore;
+  const [_page, setPage] = pageStore;
 
   createEffect(() => {
     // Change h1 height on div height change
@@ -18,18 +20,18 @@ export default function Home() {
   return (
     <Motion.section
       id="hover"
-      class="flex items-center justify-center"
+      class="flex items-center justify-center hover my-48"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={() => {
         setPage("about");
       }}
-      onmouseenter={() => {
-        console.log("hovering!!!!");
+      onMouseEnter={() => {
+        setHover(true);
       }}
       onMouseLeave={() => {
-        console.log("hovering end!!!!");
+        setHover(false);
       }}
     >
       <h1
